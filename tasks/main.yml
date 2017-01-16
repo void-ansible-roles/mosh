@@ -13,3 +13,13 @@
     mode: 0640
   notify:
     - iptables
+
+- name: Install mosh firewall rules (v6)
+  copy:
+    src: mosh.6rules
+    dest: /etc/ip6tables.d/mosh.6rules
+    owner: root
+    group: root
+    mode: 0640
+  notify:
+    - iptables
