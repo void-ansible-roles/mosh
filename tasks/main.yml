@@ -1,25 +1,25 @@
 ---
 - name: Install mosh
-  xbps:
+  community.general.xbps:
     pkg: mosh
     state: present
 
 - name: Install mosh firewall rules
-  copy:
+  ansible.builtin.copy:
     src: mosh.rules
     dest: /etc/iptables.d/mosh.rules
     owner: root
     group: root
-    mode: 0640
+    mode: "0640"
   notify:
     - iptables
 
 - name: Install mosh firewall rules (v6)
-  copy:
+  ansible.builtin.copy:
     src: mosh.6rules
     dest: /etc/ip6tables.d/mosh.6rules
     owner: root
     group: root
-    mode: 0640
+    mode: "0640"
   notify:
     - iptables
